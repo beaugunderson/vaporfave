@@ -10,8 +10,9 @@
   "license": "BSD",
   "dependencies": {
     "async": "^0.9.0",
-    "canvas": "^1.1.6",
+    "canvas": "git+https://github.com/Automattic/node-canvas.git",
     "chai": "^1.9.1",
+    "commander": "^2.3.0",
     "gulp": "^3.8.7",
     "gulp-load-plugins": "^0.6.0",
     "gulp-shell": "^0.2.9",
