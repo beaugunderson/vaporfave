@@ -9,13 +9,19 @@
   "author": "Beau Gunderson <beau@beaugunderson.com>",
   "license": "BSD",
   "dependencies": {
+    "async": "^0.9.0",
     "canvas": "^1.1.6",
+    "chai": "^1.9.1",
     "gulp": "^3.8.7",
     "gulp-load-plugins": "^0.6.0",
     "gulp-shell": "^0.2.9",
     "lodash": "^2.4.1",
+    "mocha": "^1.21.4",
     "onecolor": "^2.4.2",
+    "request": "^2.44.0",
+    "revisit": "git+https://github.com/contra/revisit.git",
     "rimraf": "^2.2.8",
+    "twit": "^1.1.18",
     "unique-random": "^1.0.0",
     "victor": "git+https://github.com/beaugunderson/victor.git"
   }
