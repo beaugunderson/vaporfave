@@ -18,7 +18,9 @@ program
   .option('-r, --random', 'only post a percentage of the time')
   .action(function (options) {
     if (options.random) {
-      if (_.random(0, 1, true) < 0.01) {
+      if (_.random(0, 1, true) > 0.01) {
+        console.log('Skipping...');
+
         process.exit(0);
       }
     }
