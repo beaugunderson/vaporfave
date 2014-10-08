@@ -44,7 +44,20 @@ program
         access_token_secret: process.env.ACCESS_TOKEN_SECRET
       });
 
-      T.updateWithMedia('', null, buffer, function (err, response, body) {
+      var imageBots = [
+        'plzrevisit',
+        'pixelsorter',
+        'a_quilt_bot',
+        'badpng'
+      ];
+
+      var tweet = '';
+
+      if (_.random(0, 100) < 20) {
+        tweet = '→ ' + _.sample(imageBots);
+      }
+
+      T.updateWithMedia(tweet, null, buffer, function (err, response, body) {
         if (err || response.statusCode !== 200) {
           return console.log('TUWM error', err, body);
         }
