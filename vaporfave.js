@@ -45,16 +45,21 @@ program
       });
 
       var imageBots = [
-        'plzrevisit',
-        'pixelsorter',
-        'a_quilt_bot',
-        'badpng'
+        '@plzrevisit',
+        '@pixelsorter',
+        '@a_quilt_bot',
+        '@badpng'
+      ];
+
+      var arrows = [
+        '→',
+        '👋'
       ];
 
       var tweet = '';
 
       if (_.random(0, 100) < 20) {
-        tweet = '→ ' + _.sample(imageBots);
+        tweet = _.sample(arrows) + ' ' + _.sample(imageBots);
       }
 
       T.updateWithMedia(tweet, null, buffer, function (err, response, body) {
