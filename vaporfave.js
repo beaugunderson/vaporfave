@@ -58,7 +58,7 @@ program
 
       var tweet = '';
 
-      if (_.random(0, 100) < 20) {
+      if (_.random(0, 100) < 25) {
         tweet = _.sample(arrows) + ' ' + _.sample(imageBots);
       }
 
