@@ -4,9 +4,10 @@ var EccoJam = require('./lib/ecco-jam.js');
 var fs = require('fs');
 var Twit = require('twit');
 var updateWithMedia = require('./lib/twitter-update-with-media.js');
+var utilities = require('./lib/utilities.js');
 var _ = require('lodash');
 
-//var SCREEN_NAME = process.env.SCREEN_NAME;
+utilities.mixin(_);
 
 _.mixin(Twit.prototype, updateWithMedia);
 
@@ -18,7 +19,7 @@ program
   .option('-r, --random', 'only post a percentage of the time')
   .action(function (options) {
     if (options.random) {
-      if (_.random(0, 1, true) > 0.01) {
+      if (_.percentChance(98)) {
         console.log('Skipping...');
 
         process.exit(0);
@@ -58,7 +59,7 @@ program
 
       var tweet = '';
 
-      if (_.random(0, 100) < 25) {
+      if (_.percentChance(25)) {
         tweet = _.sample(arrows) + ' ' + _.sample(imageBots);
       }
 
