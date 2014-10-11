@@ -10,6 +10,7 @@
   "license": "BSD",
   "dependencies": {
     "async": "^0.9.0",
+    "bot-utilities": "git+https://github.com/beaugunderson/node-bot-utilities.git",
     "chai": "^1.9.2",
     "commander": "^2.3.0",
     "gulp": "^3.8.8",
