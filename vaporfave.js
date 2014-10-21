@@ -9,6 +9,8 @@ var _ = require('lodash');
 _.mixin(botUtilities.lodashMixins);
 _.mixin(Twit.prototype, botUtilities.twitMixins);
 
+var SCREEN_NAME = process.env.SCREEN_NAME;
+
 var program = require('commander');
 
 program
@@ -48,6 +50,37 @@ program
         }
 
         console.log('TUWM OK');
+      });
+    });
+  });
+
+program
+  .command('retweet')
+  .description('Retweet replies')
+  .action(function () {
+    var T = new Twit(botUtilities.getTwitterAuthFromEnv());
+
+    var stream = T.stream('user');
+
+    // Look for tweets where image bots mention us and retweet them
+    stream.on('tweet', function (tweet) {
+      // Discard tweets where we're not mentioned
+      if (!_.some(tweet.entities.user_mentions, {screen_name: SCREEN_NAME})) {
+        return;
+      }
+
+      // Discard tweets that aren't from image bots
+      if (!_.contains(botUtilities.IMAGE_BOTS, tweet.user.screen_name)) {
+        return;
+      }
+
+      T.post('statuses/retweet/:id', {id: tweet.id_str},
+          function (err, data, response) {
+        if (err || response.statusCode !== 200) {
+          return console.log('TUWM error', err, data);
+        }
+
+        console.log('Successfully retweeted tweet', tweet.id_str);
       });
     });
   });
