@@ -28,7 +28,7 @@ gulp.task('lint', ['lint-js']);
 gulp.task('watch', function () {
   var watcher = gulp.watch(paths.js, ['output']);
 
-  watcher.on('change', function(event) {
+  watcher.on('change', function (event) {
     console.log('File ' + event.path + ' was ' + event.type + ', running...');
   });
 });
