@@ -65,7 +65,8 @@ program
     // Look for tweets where image bots mention us and retweet them
     stream.on('tweet', function (tweet) {
       // Discard tweets where we're not mentioned
-      if (!_.some(tweet.entities.user_mentions, {screen_name: SCREEN_NAME})) {
+      if (!tweet.entities ||
+          !_.some(tweet.entities.user_mentions, {screen_name: SCREEN_NAME})) {
         return;
       }
 
