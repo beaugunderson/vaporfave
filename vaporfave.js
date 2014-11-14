@@ -3,6 +3,7 @@
 var botUtilities = require('bot-utilities');
 var EccoJam = require('./lib/ecco-jam.js');
 var fs = require('fs');
+var program = require('commander');
 var Twit = require('twit');
 var _ = require('lodash');
 
@@ -10,8 +11,6 @@ _.mixin(botUtilities.lodashMixins);
 _.mixin(Twit.prototype, botUtilities.twitMixins);
 
 var SCREEN_NAME = process.env.SCREEN_NAME;
-
-var program = require('commander');
 
 program
   .command('tweet')
