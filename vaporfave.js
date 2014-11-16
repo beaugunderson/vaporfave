@@ -40,7 +40,13 @@ program
       var tweet = '';
 
       if (_.percentChance(25)) {
-        tweet = botUtilities.heyYou(botUtilities.imageBot());
+        var bot = botUtilities.imageBot();
+
+        tweet = botUtilities.heyYou(bot);
+
+        if (bot === 'Lowpolybot') {
+          tweet += ' #noRT';
+        }
       }
 
       T.updateWithMedia(tweet, null, buffer, function (err, response, body) {
