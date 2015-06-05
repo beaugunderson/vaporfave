@@ -31,7 +31,7 @@ program
     eccoJam.draw();
 
     eccoJam.toBuffer(function (err, buffer) {
-      if (err) {
+      if (err || !buffer) {
         throw err;
       }
 
@@ -49,9 +49,11 @@ program
         }
       }
 
-      T.updateWithMedia(tweet, null, buffer, function (err, response, body) {
-        if (err || response.statusCode !== 200) {
-          return console.log('TUWM error', err, body);
+      tweet = {status: tweet};
+
+      T.updateWithMedia(tweet, buffer, function (err, response, body) {
+        if (err) {
+          return console.error('TUWM error', err, response.statusCode);
         }
 
         console.log('TUWM OK');
